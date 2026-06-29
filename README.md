@@ -7,7 +7,7 @@
 
 ## Course Description
 
-This repository serves as a dedicated workspace for my C++ Programming Laboratory course during the 11402 semester. The primary focus is on mastering algorithmic thinking and practical coding through intensive problem-solving.
+This repository contains my programming assignments, laboratory exercises, and online judge solutions for the C++ Programming Laboratory course. It documents my learning progress throughout the semester and serves as a personal archive of problem-solving practice and algorithm implementations.
 
 ## Course Information
 
