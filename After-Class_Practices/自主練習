@@ -1,0 +1,799 @@
+1121511 — 2026/5/21 下午 05:54
+10041
+#include <iostream>
+#include <algorithm>
+using namespace std;;
+int main() {
+    int times = 0;
+    cin >> times;
+    while (times--) {
+        int n;
+        cin >> n;
+        int a[500];
+        for (int i = 0; i <n; i++) {
+            cin >> a[i];
+        }
+        sort(a, a + n);
+        int mid = (a[n / 2]);
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += abs(mid - a[i]);
+        }
+        cout << sum << endl;
+    }
+}
+10055
+#include <iostream>
+#include <algorithm>
+using namespace std;;
+int main() {
+    long long int a, b;
+    while (cin >> a >> b) {
+        long long int ans = abs(a - b);
+        cout << ans<<endl;
+    }
+
+}
+1121511 — 2026/5/21 下午 07:10
+10035
+    #include <iostream>
+    #include <algorithm>
+    using namespace std;;
+    int main() {
+        int a, b;
+        while (cin >> a >> b) {
+            if (a ==0&&b==0) return 0;
+            int temp = 0;
+            int temp1 = 0;
+            int ans = 0;
+            for (int i = 10; i > 0; i--) {
+            temp += a % 10 + b % 10+temp1;
+            a /= 10; b /= 10;
+            if (temp >= 10) {
+                temp = 0;
+                temp1 = 1;
+                ans++;
+            }
+            else{
+            temp = 0;
+            temp1 = 0;
+            }
+
+            }
+            if (ans == 0)
+                cout << "No carry operation."<<endl;
+            if(ans>1)
+            cout << ans << " carry operations." << endl;
+            if(ans==1)
+            cout << ans << " carry operation." << endl;
+
+
+        }
+    }
+1121511 — 2026/5/21 下午 11:24
+100
+#include <iostream>
+#include <algorithm>
+using namespace std;;
+int main() {
+    long long int a, b;
+    while (cin >> a >> b) {
+        int max = 1;
+        int temp = 1;
+        long long int c = a; long long int d = b;
+        if (a > b) swap(a, b);
+        for (long long int i = a; i <= b; i++) {
+            long long int n = i;
+            while (n != 1) {
+                if (n % 2 == 1) {
+                    n *= 3;
+                    n++;
+                    temp++;
+                }
+                else {
+                    n /= 2;
+                    temp++;
+                }
+            }
+            if (temp > max) {
+            max = temp;
+            }
+            temp = 1;
+        }
+        cout << c << " " << d << " " << max<<endl;
+    }
+    return 0;
+}
+1121511 — 2026/5/21 下午 11:56
+10929
+#include <iostream>
+#include <algorithm>
+#include <string>
+
+using namespace std;;
+int main() {
+    string num;
+    while (getline(cin,num)){
+        if (num == "0") return 0;
+        int ans = 0;
+        int one = 0;
+        int two = 0; 
+    for (int i = 0; i < num.length(); i++) {
+
+        if (i % 2 == 0) 
+        two += (num[i] - '0');
+        else one += (num[i] - '0');
+        ans=abs(two - one);
+        }
+        if (ans % 11 == 0)
+        cout << num << " is a multiple of 11." << endl;
+        else cout << num << " is not a multiple of 11." << endl;
+
+}
+}
+1121511 — 2026/5/23 下午 05:09
+10101
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void printBangla(long long n) {
+    if (n >= 10000000) {
+        printBangla(n / 10000000);
+        cout << " kuti";
+        n %= 10000000;
+    }
+    if (n >= 100000) {
+        cout << " " << n / 100000 << " lakh";
+        n %= 100000;
+    }
+    if (n >= 1000) {
+        cout << " " << n / 1000 << " hajar";
+        n %= 1000;
+    }
+    if (n >= 100) {
+        cout << " " << n / 100 << " shata";
+        n %= 100;
+    }
+    if (n > 0) {
+        cout << " " << n;
+    }
+}
+
+int main() {
+    long long c;
+    int times = 1;
+
+    while (cin >> c) {
+        cout << setw(4) << times << ".";
+
+        if (c == 0)
+            cout << " 0";
+        else
+            printBangla(c);
+
+        cout << endl;
+        times++;
+    }
+
+    return 0;
+}
+1121511 — 2026/5/23 下午 05:21
+10420
+#include <iostream>
+#include <iomanip>
+#include <map>
+#include <string>
+#include <sstream>
+using namespace std;
+int main() {
+    int times = 0;
+    cin >> times;
+    cin.ignore();
+    string country;
+    string ss;
+    map<string, int>mp;
+    while (times--) {
+    getline(cin, ss);
+    stringstream s(ss);
+    s >> country;
+    mp[country]++;
+    }
+
+    for (auto o : mp) {
+        cout << o.first << " " << o.second << endl;
+    }
+}
+1121511 — 2026/5/23 下午 06:20
+10008
+#include <iostream>
+#include <iomanip>
+#include <map>
+#include <string>
+#include <sstream>
+using namespace std;
+int main() {
+    int times = 0;
+    cin >> times;
+    cin.ignore();
+    int cnt[26] = {0};
+    while (times--) {
+        string q;
+        getline(cin, q);
+        for (int i = 0; i < q.length(); i++) {
+            if (isalpha(q[i])) {
+                char c = toupper(q[i]);
+                cnt[c - 'A']++;
+            }
+        }
+    }
+    for (int i = 1000; i > 0; i--) {
+        for (int j = 0; j < 26; j++) {
+            if (cnt[j] == i) {
+                cout << char(j + 'A') << ' ' << cnt[j] << endl;
+            }
+        }
+    }
+    return 0;
+}
+1121511 — 2026/5/23 下午 06:53
+10222
+#include <iostream>
+#include <iomanip>
+#include <map>
+#include <string>
+#include <sstream>
+#include<cctype>
+using namespace std;
+int main() {
+    string keyboard = {"1234567890-=qwertyuiop[]\asdfghjkl;'zxcvbnm,./"};
+    string a;
+    while (getline(cin,a)) {
+        for (int i = 0; i < a.length(); i++) {
+            if (a[i] == ' ')
+            cout << " ";
+            for (int j = 0; j < keyboard.length(); j++) {
+                char c = tolower(a[i]);
+                if(c==keyboard[j])
+                    cout << keyboard[j - 2];
+            }
+
+        }
+        cout << endl;
+    }
+} 
+11332
+#include <iostream>
+#include <iomanip>
+#include <map>
+#include <string>
+#include <sstream>
+#include<cctype>
+using namespace std;
+int main() {
+    long long int a = 0;
+    while (cin >> a && a != 0) {
+        long long int b = a;
+        int temp = 0;
+        while (b != 0) {
+            temp += b % 10;
+            b /= 10;
+            if (temp >= 10&&b==0) {
+            b = temp;
+            temp = 0;
+        }
+        }
+
+        cout << temp << endl;
+    }
+}
+1121511 — 2026/5/24 下午 04:29
+10252
+#include <iostream>
+#include <iomanip>
+#include <map>
+#include <string>
+#include <sstream>
+#include<cctype>
+using namespace std;
+int main() {
+    string a;
+    string b;
+    while (getline(cin, a) && getline(cin, b)) {
+        int cntA[26] = {0};
+        int cntB[26] = { 0 };
+        for (int i = 0; i < a.length(); i++)
+            cntA[a[i] - 'a']++;
+        for (int i = 0; i < b.length(); i++)
+            cntB[b[i] - 'a']++;
+
+        for (int i = 0; i < 26; i++) {
+            int times = min(cntA[i], cntB[i]);
+            for (int j = 0; j < times; j++)
+                cout << char('a' + i);
+        }    cout << endl;
+    }
+    return 0;
+}
+1121511 — 2026/5/24 下午 04:58
+490
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string a[100];
+    string line;
+    int maxlen = 0;
+    int n = 0;
+
+    while (getline(cin, line)) {
+        a[n] = line;
+
+        if (line.length() > maxlen)
+            maxlen = line.length();
+
+        n++;
+    }
+
+    for (int i = 0; i < maxlen; i++) {
+        for (int j = n - 1; j >= 0; j--) {
+            if (i < a[j].length())
+                cout << a[j][i];
+            else
+                cout << ' ';
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+1121511 — 2026/5/24 下午 05:24
+272
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string line;
+    int a = 0;
+    while (getline(cin, line)) {
+        for (int i = 0; i < line.length(); i++) {
+            if (line[i] == '"' && a % 2 == 0) {
+                cout << "``";
+                a++;
+            }
+            else if (line[i] == '"' && a % 2 == 1) {
+                cout << "''";
+                a++;
+            }
+
+            else cout << line[i];
+        }
+        cout << endl;
+    }
+    return 0;
+}
+1121511 — 2026/5/24 下午 07:41
+12019
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main(){
+    int T = 0;
+    cin >> T;
+    int M[13] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+    string day[7] = {
+    "Saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"};
+
+    while (T--) {
+        int a = 0;
+        int b = 0;
+        cin >> a >> b;
+        int days = 0;
+        for (int i = 0; i <a; i++) {
+            days += M[i];
+        }
+        days += b;
+        days = (days - 1) % 7;
+        cout << day[days] << endl;
+    }
+}
+1121511 — 2026/5/25 上午 11:44
+10038
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <iomanip>
+#include<algorithm>
+#include<sstream>
+using namespace std;
+
+int main(){
+    int n = 0;
+    while (cin>>n) {
+        bool ans = true;
+        int a[3000] = { 0 };
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        int temp[3000] = { 0 };
+        for (int i = 0; i < n - 1; i++) {
+            temp[i] = abs(a[i] - a[i + 1]);
+        }
+        sort(temp, temp + n - 1);
+        for (int i = 0; i < n - 1; i++) {
+            if (temp[i] != i + 1)
+                ans = false;
+            }
+        if (ans)
+            cout << "Jolly" << endl;
+        else cout << "Not jolly" << endl;
+        }
+
+    }
+1121511 — 2026/5/25 下午 03:41
+10056
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <iomanip>
+#include<algorithm>
+#include<sstream>
+#include<cmath>
+using namespace std;
+
+int main() {
+    int times = 0;
+    cin >> times;
+    while (times--) {
+        int a = 0;
+        float p = 0;
+        int who = 0;
+        float ans = 1;
+        cin >> a >> p >> who;
+        if (p == 0) {
+            cout << "0.0000" << endl;
+            continue;
+        }
+        else
+        {
+            ans = pow(1 - p, who - 1) p /( 1 - pow(1 - p, a));
+            cout <<fixed<<setprecision(4)<< ans << endl;
+        }
+    }
+    return 0;
+}
+1121511 — 2026/5/25 下午 04:18
+10170
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <iomanip>
+#include<algorithm>
+#include<sstream>
+#include<cmath>
+using namespace std;
+
+int main() {
+    long long int a = 0; long long int b = 0;
+    while (cin >> a >> b) {
+        long long int ans = a;
+        while (b > 0 && b - a > 0) {
+            b -= a;
+            a++;
+            ans++;
+        }
+        cout << ans << endl;
+    }
+}
+1121511 — 2026/5/25 下午 04:38
+10268
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+int main() {
+
+    long long x;
+    string s;
+
+    while (cin >> x) {
+
+        cin.ignore();
+
+        getline(cin, s);
+
+        stringstream ss(s);
+
+        long long a[1000];
+        int count = 0;
+
+        while (ss >> a[count]) {
+            count++;
+        }
+
+        int n = count - 1;
+
+        long long ans = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            ans += a[i] * (n - i) * pow(x, n - i - 1);
+        }
+
+        cout << ans << endl;
+    }
+
+    return 0;
+}
+1121511 — 2026/5/25 下午 04:50
+10812
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <iomanip>
+#include<algorithm>
+#include<sstream>
+#include<cmath>
+using namespace std;
+
+int main() {
+    int times = 0;
+    cin >> times;
+    while (times--) {
+        int a = 0; int b = 0;
+        cin >> a >> b;
+        int ans = (a + b) / 2;
+        if (b > a|| (b+a)%2!=0)
+            cout << "impossible" << endl;
+        else cout << ans<< " " << a-ans << endl;
+    }
+}
+1121511 — 2026/5/25 下午 05:25
+11349
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <iomanip>
+#include<algorithm>
+#include<sstream>
+#include<cmath>
+using namespace std;
+
+int main() {
+    int times = 0;
+    cin >> times;
+    int ww = 1;
+    while (times--) {
+
+        char a;
+        int n = 0;
+        cin >> a >> a >> n;
+        long long int ar[105][105];
+        bool ok = true;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cin >> ar[i][j];
+                if (ar[i][j] < 0)
+                    ok = false;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (ar[i][j] != ar[n - 1 - i][n - 1 - j])
+                    ok = false;
+            }
+        }
+        if (ok)
+            cout << "Test #" << ww << ": Symmetric."<<endl;
+        else
+            cout << "Test #" << ww << ": Non-symmetric."<<endl;
+            ww++;
+    }
+}
+1121511 — 2026/5/25 下午 08:22
+11063
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <iomanip>
+#include<algorithm>
+#include<sstream>
+#include<cmath>
+using namespace std;
+
+int main() {
+    int a = 0;
+    int times = 1;
+    while(cin >> a) {
+        int b = a;
+
+        int f = 0;
+        bool ans = true;
+        int n = 0;
+        int arr[100] = {0};
+        int anss[10000] = { 0 };
+        while (b--) {
+            cin >> arr[n];
+            if (arr[n] <= 0) {
+                ans = false;
+            }
+            if (n > 0 && arr[n] <= arr[n - 1])
+                ans = false;
+            n++;
+        }
+        for (int i = 0; i < a; i++) {
+            for (int j = i; j < a; j++) {
+                anss[f] = arr[i] + arr[j];
+                f++;
+            }
+        }
+        sort(anss,anss + f);
+        for (int i = 0; i < f-1; i++) {
+            if (anss[i] == anss[i + 1]) {
+            ans = false;
+            break;
+            }
+        }
+        if (ans) 
+            cout << "Case #" << times << ": It is a B2-Sequence." << endl<<endl;
+        else
+            cout << "Case #" << times << ": It is not a B2-Sequence." << endl<<endl;
+        times++;
+    }
+
+    return 0;
+}
+1121511 — 2026/5/25 下午 08:31
+10071
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <iomanip>
+#include<algorithm>
+#include<sstream>
+#include<cmath>
+using namespace std;
+
+int main() {
+    int a = 0; int b = 0;
+    while (cin >> a >> b) {
+        int ans = a * b * 2;
+        cout << ans << endl;
+    }
+}
+根本送分不用看 傻逼
+1121511 — 2026/5/25 下午 09:13
+10093#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+
+    string s;
+
+    while (cin >> s) {
+
+        int sum = 0;
+        int mx = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+
+            int val;
+
+            if (s[i] >= '0' && s[i] <= '9')
+                val = s[i] - '0';
+
+            else if (s[i] >= 'A' && s[i] <= 'Z')
+                val = s[i] - 'A' + 10;
+
+            else
+                val = s[i] - 'a' + 36;
+
+            sum += val;
+
+            if (val > mx)
+                mx = val;
+        }
+
+        bool found = false;
+
+        for (int base = mx + 1; base <= 62; base++) {
+
+            if (sum % (base - 1) == 0) {
+                cout << base << endl;
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+            cout << "such number is impossible!" << endl;
+    }
+
+    return 0;
+}
+1121511 — 2026/5/25 下午 09:38
+948
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int fib[50];
+
+    fib[0] = 1;
+    fib[1] = 2;
+
+    int cnt = 2;
+
+    while (true) {
+        fib[cnt] = fib[cnt - 1] + fib[cnt - 2];
+
+        if (fib[cnt] > 100000000)
+            break;
+
+        cnt++;
+    }
+
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int n;
+        cin >> n;
+
+        int original = n;
+        string ans = "";
+
+        bool start = false;
+
+        for (int i = cnt; i >= 0; i--) {
+            if (fib[i] <= n) {
+                ans += '1';
+                n -= fib[i];
+                start = true;
+            }
+            else if (start) {
+                ans += '0';
+            }
+        }
+
+        cout << original << " = " << ans << " (fib)" << endl;
+    }
+
+    return 0;
+}
+1121511 — 2026/6/11 下午 10:09
+11364
+#include <iostream>
+#include <iomanip>
+#include<cmath>
+#include<algorithm>
+using namespace std;;
+int main() {
+    int cases = 0;
+    cin >> cases;
+    while (cases--) {
+        int shops = 0;
+        cin >> shops;
+        int a[110] = { 0 };
+        for (int i = 0; i < shops; i++) {
+            cin >> a[i];
+        }
+        sort(a,a+shops);
+        int ans = abs(a[0] - a[shops-1]);
+        ans *= 2;
+        cout << ans << endl;
+    }
+}
